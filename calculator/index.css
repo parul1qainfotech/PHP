@@ -1,0 +1,57 @@
+.cal{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    justify-content:center;
+    height: auto;
+    margin: 10 auto;
+    font-weight: 700;
+    
+   
+   
+}
+body{
+    background-color: rgb(56, 56, 155);
+}
+
+.submit{
+   width:25%;
+   justify-content:center;
+   text-align: center;
+   margin-left:35%;
+   background-color:rgba(41, 36, 46, 0.404);
+  
+}
+
+input{
+    margin-bottom:2px;
+}
+
+
+
+label{
+    margin-bottom: 1px;
+}
+#inputfield{
+    
+        display: flex;
+        flex-direction: column;
+        width:50%;
+        justify-content:center;
+        height: auto;
+        margin: 10 auto;
+        font-weight: 700;
+        
+       
+
+}
+
+.h2{
+    font-weight: 700;
+    color:green;
+    font-size: 12px;
+    background:blue;
+    text-align:center;
+    justify-content: center;
+
+}
