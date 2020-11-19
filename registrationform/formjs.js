@@ -1,5 +1,5 @@
 
-console.log("hello");
+
 function validate()
 {
     let user=document.getElementById("user").value;

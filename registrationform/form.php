@@ -7,32 +7,37 @@
     <title>form</title>
 </head>
 <body>
-<script src="form.js"></script>
+<script src="formjs.js"></script>
     <div class="formdiv">
-   <form class="form" action="/php/dir/registrationform/form.php" method="post" name="myform" onsubmit="return validate() ">
+   <form class="form" action="/php/dir/registrationform/form.php" method="post" name="myform" onubmit="return validate()" >
        
        <h2>Registration form</h2>
        <label for="user">USERNAME</label>
-       <input type="text"  name="username"  id="user"  placeholder="username" required></input>
+       <input type="text"  name="username"  id="user"  placeholder="username" class="form-control" ></input>
         <span id="validate1"></span>
 
 
        <label for="email">EMAIL ID</label>
-       <input type="text" name="email"  id="email"placeholder="Email id" required></input>
+       <input type="text" name="email"  id="email"placeholder="Email id" ></input>
        <span id="validate2"></span>
 
        <label for="password">PASSWORD</label>
-       <input type="password" name="password"  id="password" placeholder="Password" required></input>
+       <input type="password" name="password"  id="password" placeholder="Password" ></input>
        <span id="validate3"></span>
 
        <label for="rpassword">REPEAT PASSWORD </label>
-       <input type="password" name="rpassword" id="rpassword"  placeholder="repassword" required></input>
+       <input type="password" name="rpassword" id="rpassword"  placeholder="repassword" ></input>
        <span id="validate4"></span>
       
        <button type="submit"  name="submit"   id="button" >Register</button>
 
    </form> 
    </div>
+
+   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="validation.js"></script>
 </body>
 </html>
 
@@ -66,14 +71,11 @@ $emailquery= " select * from formfield where Email= '$email'";
 $emailvalue=mysqli_query($conn,$emailquery);
 $countemail=mysqli_num_rows($emailvalue);
 $countuser=mysqli_num_rows($datavalue);
-echo "$countuser";
-echo "$countemail";
 
     if($countuser>0)
     {?>
         <script>
-         //alert("username and password already exists");
-          document.getElementById("validate1").innerHTML="Username already";
+          document.getElementById("validate1").innerHTML="Username already exists";
         </script>
         <?php
         }
@@ -87,22 +89,14 @@ echo "$countemail";
 
 
 
-else{
-    if($passwd===$rpassword){
+elseif($passwd===$rpassword){
         
         $query="insert into formfield (Username, Email, Password, Repassword) values ( '$username','$email','$passwd', '$rpassword')";
         mysqli_query($conn,$query);
         
        }
-    else{
-        ?>
-        <script>
-       // alert("Please type the same password");
-         document.getElementById("validate3").innerHTML="password not matching ";
-        </script>
-        <?php
-    }
-}
+
+
 // total no of user who signed up ..
 $countquery= " select * from formfield ";
 $countv=mysqli_query($conn,$countquery);
